@@ -1,17 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Login } from './components/Login';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AdminRoute } from './components/AdminRoute';
+import { FacultyView } from './components/FacultyView';
+import { Landing } from './components/Landing';
+import { CoursesView } from './components/CoursesView';
+import { StudentsView } from './components/StudentsView';
+import { EvaluationsView } from './components/EvaluationsView';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <Router>
+        <Switch>
+            <Route path='/login' component={Login} exact />
+            <AdminRoute path='/' component={Landing} exact />
+            <AdminRoute path='/faculty/all' component={FacultyView} exact />
+            <AdminRoute path='/students/all' component={StudentsView} exact />
+            <AdminRoute path='/courses/all' component={CoursesView} exact />
+            <AdminRoute
+                path='/evaluations/all'
+                component={EvaluationsView}
+                exact
+            />
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+            <Login />
+        </Switch>
+    </Router>,
+    document.getElementById('root')
+);
