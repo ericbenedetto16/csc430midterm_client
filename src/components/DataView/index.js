@@ -5,7 +5,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { IconButton, Modal } from '@material-ui/core';
 
 export const DataView = ({ dataURI, resTarget, columns, ModalBody }) => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [data, setStudents] = useState([]);
     const [modal, setModal] = useState(false);
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input, TextField, Typography } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 import { ModalTemplate } from '../ModalTemplate';
 
 export const FacultyModal = React.forwardRef(({ dismiss }) => {

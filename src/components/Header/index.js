@@ -39,7 +39,7 @@ export const Header = () => {
         { name: 'Home', href: '/' },
         { name: 'Students', href: '/students/all' },
         { name: 'Faculty', href: '/faculty/all' },
-        { name: 'Evaluations', href: '/evaluations/all' },
+        { name: 'Courses', href: '/courses/all' },
     ];
 
     return (

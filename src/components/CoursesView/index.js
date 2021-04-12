@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { DataGrid } from '@material-ui/data-grid';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { IconButton, Modal } from '@material-ui/core';
+import React from 'react';
 import { DataView } from '../DataView';
+import { CourseModal } from './CourseModal';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 125 },
@@ -22,7 +20,7 @@ export const CoursesView = () => {
             dataURI={`${process.env.REACT_APP_API_URL}/api/v1/courses/`}
             resTarget='courses'
             columns={columns}
-            ModalBody={<></>}
+            ModalBody={CourseModal}
         />
     );
 };

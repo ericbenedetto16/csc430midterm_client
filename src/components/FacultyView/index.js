@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { DataGrid } from '@material-ui/data-grid';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { IconButton, Modal } from '@material-ui/core';
+import React from 'react';
 import { DataView } from '../DataView';
 import { FacultyModal } from './FacultyModal';
 const columns = [
