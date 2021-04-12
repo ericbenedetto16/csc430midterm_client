@@ -7,7 +7,7 @@ import { Header } from '../Header';
 
 export const AdminRoute = ({ component: Component, ...rest }) => {
     const logged = useAuthentication(ROLES.ADMIN);
-    console.log(logged);
+
     return (
         <Route
             {...rest}

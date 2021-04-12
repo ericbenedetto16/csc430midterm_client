@@ -12,7 +12,6 @@ export const useAuthentication = (role) => {
                 if (!d.success) {
                     setAuth(false);
                 } else if (d.user.role.roleName === role) {
-                    console.log(d);
                     setAuth(true);
                 } else {
                     setAuth(false);

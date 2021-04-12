@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ModalTemplate = (props, ref) => {
     const { dismiss, onSubmit, children } = props;
-    console.log(props);
+
     return (
         <div
             style={{

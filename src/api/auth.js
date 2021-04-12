@@ -15,7 +15,6 @@ export const userAuthenticated = async (controller) => {
         const j = await res.json();
         return j;
     } catch (err) {
-        console.log(err);
         return false;
     }
 };
