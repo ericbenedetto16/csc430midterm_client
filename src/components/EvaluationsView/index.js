@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Modal } from '@material-ui/core';
+import { DataView } from '../DataView';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 125 },
@@ -27,60 +28,12 @@ const columns = [
 ];
 
 export const EvaluationsView = () => {
-    const [loading, setLoading] = useState(false);
-    const [evaluations, setEvaluations] = useState([]);
-
-    useEffect(() => {
-        const f = async () => {
-            try {
-                const data = await fetch(
-                    `${process.env.REACT_APP_API_URL}/api/v1/evaluations/`
-                );
-
-                const json = await data.json();
-
-                if (!json.success) throw new Error("Couldn't Get Evaluations");
-
-                setEvaluations(json.evaluations);
-                setLoading(false);
-            } catch (err) {
-                alert('Error Fetching Evaluations');
-                setLoading(false);
-            }
-        };
-        f();
-    }, []);
-
     return (
-        <div style={{ height: 400, width: '100%' }}>
-            {loading ? (
-                <p>Loading</p>
-            ) : (
-                <>
-                    <DataGrid
-                        rows={evaluations}
-                        columns={columns}
-                        pageSize={5}
-                    />
-                    <IconButton
-                        aria-label='add'
-                        edge='end'
-                        size='medium'
-                        style={{
-                            width: '50px',
-                            height: '50px',
-                            position: 'absolute',
-                            right: '30px',
-                        }}
-                        onClick={() => alert("Let's Make a New Record")}
-                    >
-                        <AddCircleIcon
-                            color='primary'
-                            style={{ width: '50px', height: '50px' }}
-                        />
-                    </IconButton>
-                </>
-            )}
-        </div>
+        <DataView
+            dataURI={`${process.env.REACT_APP_API_URL}/api/v1/evaluations/`}
+            resTarget='evaluations'
+            columns={columns}
+            ModalBody={<></>}
+        />
     );
 };
