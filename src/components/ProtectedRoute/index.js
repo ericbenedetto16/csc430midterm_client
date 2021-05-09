@@ -5,8 +5,8 @@ import { useAuthentication } from '../../hooks';
 import { ROLES } from '../../utils/constants';
 import { Header } from '../Header';
 
-export const AdminRoute = ({ component: Component, ...rest }) => {
-    const { logged, role } = useAuthentication(new Set([ROLES.ADMIN]));
+export const ProtectedRoute = ({ component: Component, ...rest }) => {
+    const { logged, role } = useAuthentication(new Set(Object.values(ROLES)));
 
     return (
         <Route
@@ -28,6 +28,6 @@ export const AdminRoute = ({ component: Component, ...rest }) => {
     );
 };
 
-AdminRoute.propTypes = {
+ProtectedRoute.propTypes = {
     component: PropTypes.func,
 };
