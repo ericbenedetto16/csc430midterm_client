@@ -1,5 +1,7 @@
 import React from 'react';
 import { DataView } from '../DataView';
+import { FacultyDeleteModal } from './FacultyDeleteModal';
+import { FacultyEditModal } from './FacultyEditModal';
 import { FacultyModal } from './FacultyModal';
 const columns = [
     { field: 'id', headerName: 'ID', width: 125 },
@@ -35,7 +37,12 @@ export const FacultyView = () => {
             dataURI={`${process.env.REACT_APP_API_URL}/api/v1/faculty/`}
             resTarget='faculty'
             columns={columns}
-            ModalBody={FacultyModal}
+            createRows
+            newModalBody={FacultyModal}
+            editRows
+            editModalBody={FacultyEditModal}
+            deleteRows
+            deleteModalBody={FacultyDeleteModal}
         />
     );
 };

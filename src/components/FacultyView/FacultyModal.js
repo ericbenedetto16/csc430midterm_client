@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, TextField, Typography } from '@material-ui/core';
 import { ModalTemplate } from '../ModalTemplate';
 
-export const FacultyModal = React.forwardRef(({ dismiss }) => {
+export const FacultyModal = React.forwardRef(({ dismiss }, ref) => {
     const [fName, setFName] = useState('');
     const [lName, setLName] = useState('');
     const [email, setEmail] = useState('');
