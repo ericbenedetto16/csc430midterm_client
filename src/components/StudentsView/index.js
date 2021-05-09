@@ -1,6 +1,7 @@
 import React from 'react';
 import { DataView } from '../DataView';
 import { StudentModal } from './StudentModal';
+import { StudentEditModal } from './StudentEditModal';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 125 },
@@ -31,7 +32,10 @@ export const StudentsView = () => {
             dataURI={`${process.env.REACT_APP_API_URL}/api/v1/students/`}
             resTarget='students'
             columns={columns}
-            ModalBody={StudentModal}
+            createRows
+            newModalBody={StudentModal}
+            editRows
+            editModalBody={StudentEditModal}
         />
     );
 };
