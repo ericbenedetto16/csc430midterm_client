@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Button, TextField } from '@material-ui/core';
-import { userAuthenticated } from '../../api/auth';
 import { useHistory } from 'react-router-dom';
+import { useAuthentication } from '../../hooks';
+import { ROLES } from '../../utils/constants';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -45,14 +46,11 @@ export const Login = () => {
     const [invalid, setInvalid] = useState(false);
     const history = useHistory();
 
+    const { logged } = useAuthentication(new Set(Object.values(ROLES)));
+
     useEffect(() => {
-        const auth = async () => {
-            if ((await userAuthenticated()).success === true) {
-                history.push('/');
-            }
-        };
-        auth();
-    }, []);
+        if (logged) history.push('/');
+    });
 
     return (
         <Grid container className={classes.container} spacing={0}>
