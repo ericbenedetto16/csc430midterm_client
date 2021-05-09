@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,6 +16,7 @@ import {
     ListItem,
     MenuItem,
 } from '@material-ui/core';
+import { ROLES } from '../../utils/constants';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,17 +32,39 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
 }));
 
-export const Header = () => {
+export const Header = ({ role }) => {
     const history = useHistory();
     const classes = useStyles();
     const [drawer, setDrawer] = useState(false);
 
-    const LINKS = [
-        { name: 'Home', href: '/' },
-        { name: 'Students', href: '/students/all' },
-        { name: 'Faculty', href: '/faculty/all' },
-        { name: 'Courses', href: '/courses/all' },
-    ];
+    const LINKS = new Map([
+        [
+            ROLES.ADMIN,
+            [
+                { name: 'Home', href: '/' },
+                { name: 'Students', href: '/students/all' },
+                { name: 'Faculty', href: '/faculty/all' },
+                { name: 'Courses', href: '/courses/all' },
+                { name: 'Evaluations', href: '/evaluations/all' },
+            ],
+        ],
+        [
+            ROLES.STUDENT,
+            [
+                { name: 'Manage Courses', href: '/enroll' },
+                { name: 'Evaluations', href: '/evaluations/create' },
+                { name: 'Grades', href: '/grades/view' },
+            ],
+        ],
+        [
+            ROLES.FACULTY,
+            [
+                { name: 'My Courses', href: '/courses/teaching' },
+                { name: 'Assign Grades', href: '/grades/assign' },
+                { name: 'My Evaluations', href: '/evaluations/view' },
+            ],
+        ],
+    ]);
 
     return (
         <AppBar position='static'>
@@ -62,7 +86,7 @@ export const Header = () => {
                     <div className={classes.toolbar} />
                     <Divider />
                     <List>
-                        {LINKS.map(({ name, href }) => (
+                        {LINKS.get(role).map(({ name, href }) => (
                             <ListItem key={name}>
                                 <Link
                                     component={RouterLink}
@@ -99,4 +123,8 @@ export const Header = () => {
             </Toolbar>
         </AppBar>
     );
+};
+
+Header.propTypes = {
+    role: PropTypes.oneOf(Object.values(ROLES)).isRequired,
 };
