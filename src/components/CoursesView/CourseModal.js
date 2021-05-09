@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Typography } from '@material-ui/core';
+import { Button, Input, TextField, Typography } from '@material-ui/core';
 import { ModalTemplate } from '../ModalTemplate';
 import { useHistory } from 'react-router-dom';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-export const CourseModal = React.forwardRef(({ dismiss }) => {
+export const CourseModal = React.forwardRef(({ dismiss }, ref) => {
     const [faculty, setFaculty] = useState([]);
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState('');
     const [teacher, setTeacher] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [maxCapacity, setMaxCapacity] = useState('');
 
     const history = useHistory();
 
@@ -48,6 +51,9 @@ export const CourseModal = React.forwardRef(({ dismiss }) => {
                     body: JSON.stringify({
                         teacher: teacher,
                         name: title,
+                        maxCapacity,
+                        startDate,
+                        endDate,
                     }),
                 }
             );
@@ -101,6 +107,34 @@ export const CourseModal = React.forwardRef(({ dismiss }) => {
                         label='Course Name'
                         placeholder='Course Name'
                         onChange={(e) => setTitle(e.target.value)}
+                        required
+                        style={{ width: '100%', marginBottom: '10px' }}
+                    />
+                    <Input
+                        type='number'
+                        id='maxCapacity'
+                        label='Max Capacity'
+                        placeholder='Max Capacity'
+                        onChange={(e) => setMaxCapacity(e.target.value)}
+                        required
+                        style={{ width: '100%', marginBottom: '10px' }}
+                    />
+
+                    <Input
+                        type='date'
+                        id='startDate'
+                        label='Start Date'
+                        placeholder='Start Date'
+                        onChange={(e) => setStartDate(e.target.value)}
+                        required
+                        style={{ width: '100%', marginBottom: '10px' }}
+                    />
+                    <Input
+                        type='date'
+                        id='endDate'
+                        label='End Date'
+                        placeholder='End Date'
+                        onChange={(e) => setEndDate(e.target.value)}
                         required
                         style={{ width: '100%', marginBottom: '10px' }}
                     />
