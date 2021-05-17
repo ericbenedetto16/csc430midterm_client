@@ -2,6 +2,8 @@ import React from 'react';
 import { DataView } from '../DataView';
 import { StudentModal } from './StudentModal';
 import { StudentEditModal } from './StudentEditModal';
+import { StudentDeleteModal } from './StudentDeleteModal';
+
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 125 },
@@ -36,6 +38,8 @@ export const StudentsView = () => {
             newModalBody={StudentModal}
             editRows
             editModalBody={StudentEditModal}
+            deleteRows
+            deleteModalBody={StudentDeleteModal}
         />
     );
 };

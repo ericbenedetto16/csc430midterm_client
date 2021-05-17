@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IconButton, Modal } from '@material-ui/core';
+import { Button, Modal } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 export const AddButton = ({ createRows, modalBody: ModalBody }) => {
@@ -9,23 +9,18 @@ export const AddButton = ({ createRows, modalBody: ModalBody }) => {
 
     return (
         <>
-            <IconButton
-                aria-label='add'
-                edge='end'
+            <Button
+                variant='contained'
+                color='primary'
                 size='medium'
                 style={{
-                    width: '50px',
-                    height: '50px',
                     position: 'absolute',
-                    right: '30px',
+                    right: '50px',
                 }}
                 onClick={() => setModal(true)}
             >
-                <AddCircleIcon
-                    color='primary'
-                    style={{ width: '50px', height: '50px' }}
-                />
-            </IconButton>
+                Add New
+            </Button>
             <Modal
                 open={modal}
                 onClose={() => setModal(false)}

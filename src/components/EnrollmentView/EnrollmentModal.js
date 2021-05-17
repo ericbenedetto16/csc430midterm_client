@@ -27,7 +27,7 @@ export const EnrollmentModal = React.forwardRef(({ data, dismiss }, ref) => {
             const json = await res.json();
             if (!json.success) throw new Error("Couldn't Submit Form");
 
-            alert('Enrolled Successfully');
+            // alert('Enrolled Successfully');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {
@@ -45,10 +45,14 @@ export const EnrollmentModal = React.forwardRef(({ data, dismiss }, ref) => {
                     Enroll in Course
                 </Typography>
                 <div style={{ width: '80%', margin: '0 auto' }}>
-                    <p>Are You Sure You Want to Enroll in this Course?</p>
+                    <p style={{ textAlign: 'center' }}>
+                        Are You Sure You Want to Enroll in this Course?</p>
 
+                    <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
                     <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                        style={{ width: 'auto', marginTop: '10px', marginRight:'5px' }}
                         variant='contained'
                         color='primary'
                         type='submit'
@@ -56,13 +60,14 @@ export const EnrollmentModal = React.forwardRef(({ data, dismiss }, ref) => {
                         Submit
                     </Button>
                     <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                        style={{ width: 'auto', marginTop: '10px' }}
                         variant='contained'
                         color='secondary'
                         onClick={() => dismiss()}
                     >
                         Cancel
                     </Button>
+                    </div>
                 </div>
             </div>
         </ModalTemplate>

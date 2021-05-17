@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Button, Input, Typography } from '@material-ui/core';
 import { ModalTemplate } from '../ModalTemplate';
 
+
 export const GradeModal = React.forwardRef(({ data, dismiss }, ref) => {
+    
     const [grade, setGrade] = useState('');
     const course = data.row.course.id;
     const student = data.row.student.id;
@@ -28,8 +30,8 @@ export const GradeModal = React.forwardRef(({ data, dismiss }, ref) => {
 
             const json = await res.json();
             if (!json.success) throw new Error("Couldn't Submit Form");
-
-            alert('Grade Submitted Successfully');
+           
+            // alert('Grade Submitted Successfully');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {
@@ -56,7 +58,7 @@ export const GradeModal = React.forwardRef(({ data, dismiss }, ref) => {
                         onChange={(e) => setGrade(e.target.value)}
                     />
                     <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                        style={{ width: 'auto', marginTop: '10px' }}
                         variant='contained'
                         color='primary'
                         type='submit'

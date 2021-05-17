@@ -2,11 +2,11 @@ import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { ModalTemplate } from '../ModalTemplate';
 
-export const FacultyDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
+export const CourseDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
     const onSubmit = async () => {
         try {
             const res = await fetch(
-                `${process.env.REACT_APP_API_URL}/api/v1/faculty/${id}`,
+                `${process.env.REACT_APP_API_URL}/api/v1/courses/${id}`,
                 {
                     method: 'DELETE',
                     headers: {
@@ -22,7 +22,7 @@ export const FacultyDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
 
             if (!json.success) throw new Error("Couldn't Submit Form");
 
-            // alert('Faculty Successfully Deleted');
+            // alert('Course Successfully Deleted');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {

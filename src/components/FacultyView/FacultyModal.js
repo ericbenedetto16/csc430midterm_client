@@ -131,8 +131,11 @@ export const FacultyModal = React.forwardRef(({ dismiss }, ref) => {
                             required
                         />
                     </div>
-                    <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                    <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
+                        <Button
+                        style={{ width: 'auto', marginTop: '10px' }}
                         variant='contained'
                         color='primary'
                         type='submit'
@@ -140,6 +143,9 @@ export const FacultyModal = React.forwardRef(({ dismiss }, ref) => {
                     >
                         Submit
                     </Button>
+
+                    </div>
+                    
                 </div>
             </div>
         </ModalTemplate>

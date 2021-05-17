@@ -4,7 +4,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { AddButton } from './AddButton';
 import { compileColumns } from './utils';
 import { Modal } from '@material-ui/core';
-
+import logo from '../SchoolLogo.png';
 export const DataView = ({
     dataURI,
     resTarget,
@@ -52,7 +52,8 @@ export const DataView = ({
     const columnFunc = columnHandler ? columnHandler : compileColumns;
 
     return (
-        <div style={{ height: 400, width: '100%' }}>
+        <div>
+        <div style={{ height: 400, width: 'auto', margin: 50,}}>
             {loading ? (
                 <p>Loading</p>
             ) : (
@@ -110,7 +111,13 @@ export const DataView = ({
                     />
                 </>
             )}
+            
         </div>
+        <div style={{position:'absolute',bottom:'0px',left:'0px'}}>
+        <img src={logo} alt='logo'></img>
+
+    </div>
+    </div>
     );
 };
 

@@ -29,7 +29,7 @@ export const GradeEditModal = React.forwardRef(({ data, dismiss }, ref) => {
             const json = await res.json();
             if (!json.success) throw new Error("Couldn't Submit Form");
 
-            alert('Grade Edited Successfully');
+            // alert('Grade Edited Successfully');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {
@@ -46,9 +46,12 @@ export const GradeEditModal = React.forwardRef(({ data, dismiss }, ref) => {
                 >
                     Submit Grade
                 </Typography>
-                <div style={{ width: '80%', margin: '0 auto' }}>
+                <div style={{ width: 'auto',
+                    display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
                     <Input
-                        style={{ width: '100%', marginTop: '10px' }}
+                        style={{ width: 'auto', marginTop: '10px', marginRight:'40px' }}
                         id='grade'
                         type='number'
                         placeholder='Grade'
@@ -56,8 +59,9 @@ export const GradeEditModal = React.forwardRef(({ data, dismiss }, ref) => {
                         defaultValue={grade}
                         onChange={(e) => setGrade(e.target.value)}
                     />
+                    
                     <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                        style={{ width: 'auto', marginTop: '10px' }}
                         variant='contained'
                         color='primary'
                         type='submit'

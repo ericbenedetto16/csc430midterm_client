@@ -61,7 +61,7 @@ export const CourseModal = React.forwardRef(({ dismiss }, ref) => {
             const json = await res.json();
             if (!json.success) throw new Error("Couldn't Submit Form");
 
-            alert('Course Successfully Created');
+            // alert('Course Successfully Created');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {
@@ -119,28 +119,35 @@ export const CourseModal = React.forwardRef(({ dismiss }, ref) => {
                         required
                         style={{ width: '100%', marginBottom: '10px' }}
                     />
+                    
 
-                    <Input
+                    <TextField
                         type='date'
                         id='startDate'
                         label='Start Date'
                         placeholder='Start Date'
                         onChange={(e) => setStartDate(e.target.value)}
                         required
-                        style={{ width: '100%', marginBottom: '10px' }}
+                        style={{ width: 'auto', marginBottom: '10px', marginLeft: '30px'  }}
+                        InputLabelProps={{
+                            shrink: true,
+                          }}
                     />
-                    <Input
+                    <TextField
                         type='date'
                         id='endDate'
                         label='End Date'
                         placeholder='End Date'
                         onChange={(e) => setEndDate(e.target.value)}
                         required
-                        style={{ width: '100%', marginBottom: '10px' }}
+                        style={{ width: 'auto', marginBottom: '10px', marginLeft:'50px' }}
+                        InputLabelProps={{
+                            shrink: true,
+                          }}
                     />
 
                     <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                        style={{ width: 'auto', marginTop: '10px' }}
                         variant='contained'
                         color='primary'
                         type='submit'

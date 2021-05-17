@@ -1,43 +1,25 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+
 import { Link as RouterLink, useHistory } from 'react-router-dom';
-import {
-    Divider,
-    Drawer,
-    Link,
-    List,
-    ListItem,
-    MenuItem,
-} from '@material-ui/core';
+
 import { ROLES } from '../../utils/constants';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-    // necessary for content to be below app bar
-    toolbar: theme.mixins.toolbar,
-}));
 
 export const Header = ({ role }) => {
     const history = useHistory();
-    const classes = useStyles();
-    const [drawer, setDrawer] = useState(false);
+    const [value, setValue] = useState(false);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+      };
 
-    const LINKS = new Map([
+    const TABS = new Map([
         [
             ROLES.ADMIN,
             [
@@ -68,46 +50,15 @@ export const Header = ({ role }) => {
 
     return (
         <AppBar position='static'>
-            <Toolbar>
-                <IconButton
-                    edge='start'
-                    className={classes.menuButton}
-                    color='inherit'
-                    aria-label='menu'
-                    onClick={() => setDrawer((curr) => !curr)}
-                >
-                    <MenuIcon />
-                </IconButton>
-                <Drawer
-                    anchor='left'
-                    open={drawer}
-                    onClose={() => setDrawer(false)}
-                >
-                    <div className={classes.toolbar} />
-                    <Divider />
-                    <List>
-                        {LINKS.get(role).map(({ name, href }) => (
-                            <ListItem key={name}>
-                                <Link
+            <Tabs value={value} onChange={handleChange} aria-label="simple tabs">
+                        {TABS.get(role).map(({ name, href }) => (
+                                <Tab
                                     component={RouterLink}
                                     to={href}
-                                    color='inherit'
-                                    key={name}
-                                    className={classes.drawerNavItem}
-                                    onClick={() => setDrawer(false)}
-                                >
-                                    <MenuItem className={classes.navLabel}>
-                                        {name}
-                                    </MenuItem>
-                                </Link>
-                            </ListItem>
+                                    label={name}
+                                />       
                         ))}
-                    </List>
-                </Drawer>
-                <Typography variant='h6' className={classes.title}>
-                    SchoolSystem
-                </Typography>
-                <Button
+                   <Button style={{position: 'absolute', top: '5px', right:'10px'}}
                     color='inherit'
                     onClick={async () => {
                         try {
@@ -120,10 +71,16 @@ export const Header = ({ role }) => {
                 >
                     Logout
                 </Button>
-            </Toolbar>
-        </AppBar>
+
+                
+                    
+            </Tabs>
+            
+        </AppBar>  
+        
     );
 };
+
 
 Header.propTypes = {
     role: PropTypes.oneOf(Object.values(ROLES)).isRequired,

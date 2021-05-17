@@ -51,11 +51,12 @@ export const EvaluationModal = React.forwardRef(({ dismiss }, ref) => {
                     }),
                 }
             );
+            setLoading(true);
 
             const json = await res.json();
             if (!json.success) throw new Error("Couldn't Submit Form");
 
-            alert('Evaluation Successfully Created');
+           // alert('Evaluation Successfully Created');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {
@@ -70,7 +71,7 @@ export const EvaluationModal = React.forwardRef(({ dismiss }, ref) => {
                     variant='h4'
                     style={{ marginBottom: '5px', textAlign: 'center' }}
                 >
-                    Create New Course
+                    Create New Evaluation
                 </Typography>
                 <div style={{ width: '80%', margin: '0 auto' }}>
                     {loading ? (
@@ -103,17 +104,22 @@ export const EvaluationModal = React.forwardRef(({ dismiss }, ref) => {
                         placeholder='Rating'
                         onChange={(e) => setRating(e.target.value)}
                         required
-                        style={{ width: '100%', marginBottom: '10px' }}
+                        style={{display:"flex", width: 'auto', marginBottom: '10px' }}
                     />
-
-                    <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                    <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
+                        <Button
+                        style={{ width: 'auto', marginTop: '10px' }}
                         variant='contained'
                         color='primary'
                         type='submit'
                     >
                         Submit
                     </Button>
+
+                    </div>
+                    
                 </div>
             </div>
         </ModalTemplate>

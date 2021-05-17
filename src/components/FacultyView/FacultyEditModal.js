@@ -35,7 +35,7 @@ export const FacultyEditModal = React.forwardRef(
 
                 if (!json.success) throw new Error("Couldn't Submit Form");
 
-                alert('Faculty Successfully Edited');
+                // alert('Faculty Successfully Edited');
                 // TODO: Instead of Refresh, Update State and Re-Render
                 window.location.reload();
             } catch (err) {
@@ -50,7 +50,7 @@ export const FacultyEditModal = React.forwardRef(
                         variant='h4'
                         style={{ marginBottom: '5px', textAlign: 'center' }}
                     >
-                        Create New Faculty Member
+                        Edit Faculty Member
                     </Typography>
                     <div style={{ width: '80%', margin: '0 auto' }}>
                         <div
@@ -104,15 +104,20 @@ export const FacultyEditModal = React.forwardRef(
                                 required
                             />
                         </div>
-
+                        <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
                         <Button
-                            style={{ width: '100%', marginTop: '10px' }}
+                            style={{ width: 'auto', marginTop: '10px' }}
                             variant='contained'
                             color='primary'
                             type='submit'
                         >
                             Submit
                         </Button>
+
+                    </div>
+                        
                     </div>
                 </div>
             </ModalTemplate>

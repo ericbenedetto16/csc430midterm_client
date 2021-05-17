@@ -74,7 +74,7 @@ export const CourseEditModal = React.forwardRef(
                 const json = await res.json();
                 if (!json.success) throw new Error("Couldn't Submit Form");
 
-                alert('Course Successfully Created');
+                // alert('Course Successfully Created');
                 // TODO: Instead of Refresh, Update State and Re-Render
                 window.location.reload();
             } catch (err) {
@@ -138,7 +138,7 @@ export const CourseEditModal = React.forwardRef(
                             required
                             style={{ width: '100%', marginBottom: '10px' }}
                         />
-                        <Input
+                        <TextField
                             type='date'
                             id='startDate'
                             label='Start Date'
@@ -146,9 +146,12 @@ export const CourseEditModal = React.forwardRef(
                             defaultValue={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
                             required
-                            style={{ width: '100%', marginBottom: '10px' }}
+                            style={{ width: 'auto', marginBottom: '10px', marginLeft:'50px' }}
+                        InputLabelProps={{
+                            shrink: true,
+                          }}
                         />
-                        <Input
+                        <TextField
                             type='date'
                             id='endDate'
                             label='End Date'
@@ -156,17 +159,25 @@ export const CourseEditModal = React.forwardRef(
                             defaultValue={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
                             required
-                            style={{ width: '100%', marginBottom: '10px' }}
+                            style={{ width: 'auto', marginBottom: '10px', marginLeft:'50px' }}
+                        InputLabelProps={{
+                            shrink: true,
+                          }}
                         />
-
+                          <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
                         <Button
-                            style={{ width: '100%', marginTop: '10px' }}
+                            style={{ width: 'auto', marginTop: '10px' }}
                             variant='contained'
                             color='primary'
                             type='submit'
                         >
                             Submit
                         </Button>
+
+                    </div>
+                        
                     </div>
                 </div>
             </ModalTemplate>
