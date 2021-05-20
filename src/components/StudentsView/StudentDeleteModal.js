@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { ModalTemplate } from '../ModalTemplate';
 
-export const FacultyDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
+export const StudentDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
     const onSubmit = async () => {
         try {
             const res = await fetch(
@@ -22,7 +22,7 @@ export const FacultyDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
 
             if (!json.success) throw new Error("Couldn't Submit Form");
 
-            // alert('Faculty Successfully Deleted');
+            // alert('Student Successfully Deleted');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {
@@ -32,12 +32,12 @@ export const FacultyDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
 
     return (
         <ModalTemplate dismiss={dismiss} onSubmit={onSubmit}>
-            <div style={{ margin: '20px' }}>
+            <div style={{  margin: '20px' }}>
                 <Typography
                     variant='h4'
                     style={{ marginBottom: '5px', textAlign: 'center' }}
                 >
-                    Delete Faculty
+                    Delete Student
                 </Typography>
                 <p style={{ textAlign: 'center' }}>
                     Are you sure you want to delete this record? This action
@@ -47,7 +47,7 @@ export const FacultyDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
                     justifyContent: "center",
                     alignItems: "center",}}>
                 <Button
-                    style={{ width: 'auto', marginTop: '10px',marginRight:'5px' }}
+                    style={{  width: 'auto', marginTop: '10px',marginRight:'5px' }}
                     variant='contained'
                     color='secondary'
                     type='submit'
@@ -62,7 +62,10 @@ export const FacultyDeleteModal = React.forwardRef(({ id, dismiss }, ref) => {
                 >
                     Cancel
                 </Button>
+
                 </div>
+
+                
             </div>
         </ModalTemplate>
     );

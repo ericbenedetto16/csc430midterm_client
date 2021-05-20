@@ -4,6 +4,7 @@ import { DataView } from '../DataView';
 import { CourseModal } from './CourseModal';
 import { ROLES } from '../../utils/constants';
 import { CourseEditModal } from './CourseEditModal';
+import { CourseDeleteModal  } from './CourseDeleteModal';
 import { useUserId } from '../../hooks';
 
 const columns = [
@@ -62,6 +63,8 @@ export const CoursesView = ({ role }) => {
                     newModalBody={CourseModal}
                     editRows
                     editModalBody={CourseEditModal}
+                    deleteRows
+                    deleteModalBody={CourseDeleteModal}
                 />
             );
         case ROLES.FACULTY:

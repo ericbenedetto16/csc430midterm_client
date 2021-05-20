@@ -27,7 +27,7 @@ export const EnrollmentDeleteModal = React.forwardRef(
                 const json = await res.json();
                 if (!json.success) throw new Error("Couldn't Submit Form");
 
-                alert('Course Dropped Successfully');
+                // alert('Course Dropped Successfully');
                 // TODO: Instead of Refresh, Update State and Re-Render
                 window.location.reload();
             } catch (err) {
@@ -46,9 +46,11 @@ export const EnrollmentDeleteModal = React.forwardRef(
                     </Typography>
                     <div style={{ width: '80%', margin: '0 auto' }}>
                         <p>Are You Sure You Want to Drop this Course?</p>
-
+                        <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
                         <Button
-                            style={{ width: '100%', marginTop: '10px' }}
+                            style={{ width: 'auto', marginTop: '10px', marginRight: '5px' }}
                             variant='contained'
                             color='secondary'
                             type='submit'
@@ -56,13 +58,17 @@ export const EnrollmentDeleteModal = React.forwardRef(
                             Drop
                         </Button>
                         <Button
-                            style={{ width: '100%', marginTop: '10px' }}
+                            style={{ width: 'auto', marginTop: '10px' }}
                             variant='contained'
                             color='primary'
                             onClick={() => dismiss()}
                         >
                             Cancel
                         </Button>
+
+                    </div>
+
+                        
                     </div>
                 </div>
             </ModalTemplate>

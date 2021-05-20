@@ -45,7 +45,7 @@ export const StudentModal = React.forwardRef(({ dismiss }, ref) => {
 
             if (!json.success) throw new Error("Couldn't Submit Form");
 
-            alert('Student Successfully Created');
+            // alert('Student Successfully Created');
             // TODO: Instead of Refresh, Update State and Re-Render
             window.location.reload();
         } catch (err) {
@@ -141,8 +141,11 @@ export const StudentModal = React.forwardRef(({ dismiss }, ref) => {
                             required
                         />
                     </div>
-                    <Button
-                        style={{ width: '100%', marginTop: '10px' }}
+                    <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
+                        <Button
+                        style={{ width: 'auto', marginTop: '10px' }}
                         variant='contained'
                         color='primary'
                         type='submit'
@@ -150,6 +153,9 @@ export const StudentModal = React.forwardRef(({ dismiss }, ref) => {
                     >
                         Submit
                     </Button>
+
+                    </div>
+                    
                 </div>
             </div>
         </ModalTemplate>

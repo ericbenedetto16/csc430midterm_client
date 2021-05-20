@@ -45,7 +45,7 @@ export const StudentEditModal = React.forwardRef(
 
                 if (!json.success) throw new Error("Couldn't Submit Form");
 
-                alert('Student Successfully Edited');
+                // alert('Student Successfully Edited');
                 // TODO: Instead of Refresh, Update State and Re-Render
                 window.location.reload();
             } catch (err) {
@@ -156,14 +156,21 @@ export const StudentEditModal = React.forwardRef(
                                 required
                             />
                         </div>
-                        <Button
-                            style={{ width: '100%', marginTop: '10px' }}
+
+                        <div style={{ display:"flex",
+                    justifyContent: "center",
+                    alignItems: "center",}}>
+                         <Button
+                            style={{ width: 'auto', marginTop: '10px' }}
                             variant='contained'
                             color='primary'
                             type='submit'
                         >
                             Submit
                         </Button>
+
+                    </div>
+                       
                     </div>
                 </div>
             </ModalTemplate>
